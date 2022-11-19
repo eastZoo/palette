@@ -31,6 +31,8 @@ function App() {
     type,
   } = buttonInputs;
 
+  console.log(buttonInputs);
+
   const onChange = (e) => {
     const { name, value } = e.target;
     setButtonInputs({
@@ -47,7 +49,7 @@ function App() {
       color,
       border,
       borderRadius: `${borderRadius}px`,
-      padding: `${padding}px`,
+      padding,
       margin: `${margin}px`,
       fontSize: `${fontSize}px`,
       cursor,

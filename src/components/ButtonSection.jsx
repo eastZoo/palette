@@ -21,7 +21,7 @@ const ButtonSection = ({
     color: color,
     border: border,
     borderRadius: `${borderRadius}px`,
-    padding: `${padding}px`,
+    padding: padding,
     margin: `${margin}px`,
     fontSize: `${fontSize}px`,
     cursor: cursor,
@@ -36,11 +36,11 @@ const ButtonSection = ({
         <div class="side-menu">
           <div className="side-content">
             <a>text</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="text"
                 name="text"
-                className="color-palette__input"
+                className="search-bar__input"
                 placeholder="input button text.."
                 onChange={onChange}
                 value={text}
@@ -48,18 +48,17 @@ const ButtonSection = ({
             </div>
           </div>
           <div className="side-content">
-            <a>fontSize</a>
-            <div className="color-palette">
+            <a>fontSize : {fontSize}px</a>
+            <div className="search-bar">
               <input
                 type="range"
                 name="fontSize"
-                className="color-palette__input"
+                className="search-bar__input"
                 min="0"
                 max="200"
                 onChange={onChange}
                 value={fontSize}
               />
-              <span>{fontSize}px</span>
             </div>
           </div>
         </div>
@@ -70,11 +69,11 @@ const ButtonSection = ({
         <div class="side-menu">
           <div className="side-content">
             <a>backgroundColor</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="color"
                 name="backgroundColor"
-                className="color-palette__input"
+                className="search-bar__input"
                 placeholder="i.e. #ffffff, rgb(255, 255, 255), rgba(255,  255, 255, .1)..."
                 onChange={onChange}
                 value={backgroundColor}
@@ -83,11 +82,11 @@ const ButtonSection = ({
           </div>
           <div className="side-content">
             <a>color</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="color"
                 name="color"
-                className="color-palette__input"
+                className="search-bar__input"
                 placeholder="i.e. #ffffff, rgb(255, 255, 255), rgba(255,  255, 255, .1)..."
                 onChange={onChange}
                 value={color}
@@ -102,31 +101,30 @@ const ButtonSection = ({
         <div class="side-menu">
           <div className="side-content">
             <a>border</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="text"
                 name="border"
                 placeholder="solid, 1px solid black..."
-                className="color-palette__input"
+                className="search-bar__input"
                 onChange={onChange}
                 value={border}
               />
             </div>
           </div>
           <div className="side-content">
-            <a>borderRadius</a>
-            <div className="color-palette">
+            <a>borderRadius : {borderRadius}px</a>
+            <div className="search-bar">
               <input
                 type="range"
                 name="borderRadius"
                 min="0"
                 max="30"
-                className="color-palette__input"
+                className="search-bar__input"
                 placeholder="10px, 10%, 10vh..."
                 onChange={onChange}
                 value={borderRadius}
               />
-              <span>{borderRadius}px</span>
             </div>
           </div>
         </div>
@@ -137,72 +135,67 @@ const ButtonSection = ({
         <div class="side-menu">
           <div className="side-content">
             <a>padding</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="text"
                 name="padding"
-                className="color-palette__input"
-                placeholder="10px, 10%, 10vh..."
+                placeholder="solid, 1px solid black..."
+                className="search-bar__input"
                 onChange={onChange}
                 value={padding}
               />
-              <span>{padding}px</span>
             </div>
           </div>
-        </div>
-        <div class="side-menu">
           <div className="side-content">
-            <a>width</a>
-            <div className="color-palette">
+            <a>width : {width}px</a>
+            <div className="search-bar">
               <input
                 type="range"
                 name="width"
                 min="0"
-                max="800"
-                className="color-palette__input"
+                max="700"
+                className="search-bar__input"
                 placeholder="10px, 10%, 10vh..."
                 onChange={onChange}
                 value={width}
               />
-              <span>{width}px</span>
             </div>
           </div>
-        </div>
-        <div class="side-menu">
           <div className="side-content">
             <a>height</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
                 type="range"
                 name="height"
                 min="0"
-                max="800"
-                className="color-palette__input"
-                placeholder="10px, 10%, 10vh..."
+                max="700"
+                placeholder="solid, 1px solid black..."
+                className="search-bar__input"
                 onChange={onChange}
                 value={height}
               />
-              <span>{height}px</span>
             </div>
           </div>
         </div>
       </div>
 
+
+      {/* 나머지 */}
       <div className="side-wrapper">
         <div class="side-title">Other</div>
         <div class="side-menu">
           <div className="side-content">
             <a>cursor</a>
-            <div className="color-palette">
+            <div className="search-bar">
               <input
-                type="radio"
+                type="text"
                 name="cursor"
                 id="cursor"
-                className="color-palette__input"
+                placeholder="pointer,zoom-in,wait,crosshair.."
+                className="search-bar__input"
                 onChange={onChange}
                 value={cursor}
               />
-              <label for="pointer">pointer</label>
             </div>
           </div>
         </div>
@@ -211,7 +204,7 @@ const ButtonSection = ({
         <button
           style={{ marginTop: "20px" }}
           type="submit"
-          className="color-palette__btn"
+          className="search-bar__btn"
           onClick={onCreate}
         >
           Save
