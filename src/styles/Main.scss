@@ -15,7 +15,7 @@
   }
   .apps-card {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
     grid-gap: 15px;
    }
@@ -44,6 +44,17 @@
       margin-left: auto;
       margin-top: 16px;
      }
+    span {
+      font-size: 14px;
+      line-height: 1;
+      color: #ffffff;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 200ms, transform 200ms;
+    }
+    &:hover span{
+      opacity: 1;
+      transform: translateY(0);
+     }
   }
 }
-

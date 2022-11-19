@@ -11,17 +11,7 @@ function App() {
   const nextId = useRef(1);
   const [section, setSection] = useState("Button");
   const [buttonInputs, setButtonInputs] = useState({
-    id: 1,
     text: "button",
-    backgroundColor: "",
-    color: "",
-    border: "1",
-    borderRadius: "1",
-    padding: "1",
-    margin: "1",
-    fontSize: "16",
-    cursor: "",
-    type: ""
   });
 
   // main컴포넌트에 넘어갈 요소들
@@ -36,6 +26,8 @@ function App() {
     margin,
     fontSize,
     cursor,
+    height,
+    width,
     type,
   } = buttonInputs;
 
@@ -54,12 +46,14 @@ function App() {
       backgroundColor,
       color,
       border,
-      borderRadius:`${borderRadius}px`,
-      padding:`${padding}px`,
-      margin:`${margin}px`,
-      fontSize:`${fontSize}px`,
+      borderRadius: `${borderRadius}px`,
+      padding: `${padding}px`,
+      margin: `${margin}px`,
+      fontSize: `${fontSize}px`,
       cursor,
-      type : section,
+      height: `${height}px`,
+      width: `${width}px`,
+      type: section,
     };
     setstyles(styles.concat(style));
     nextId.current += 1;
@@ -107,6 +101,8 @@ function App() {
                 margin={margin}
                 fontSize={fontSize}
                 cursor={cursor}
+                height={height}
+                width={width}
                 onChange={onChange}
                 onCreate={onCreate}
               />
@@ -115,7 +111,7 @@ function App() {
           </div>
           {/* 오른쪽 메인 팔레트 */}
           <div className="main-container">
-            <Main styles={styles} type={section} onRemove={onRemove}/>
+            <Main styles={styles} onRemove={onRemove}/>
           </div>
         </div>
         <Footer />

@@ -61,11 +61,12 @@ body {
       overflow: hidden;
       height: 680px;
       .left-side {
-        flex-basis: 240px;
+        flex-basis: 450px;
         border-right: 1px solid var(--border-color);
         padding: 26px;
         overflow: auto;
         flex-shrink: 0;
+        box-sizing: border-box;
       }
       .main-container {
         display: flex;
