@@ -1,0 +1,23 @@
+const Button = [
+      "backgroundColor",
+      "color",
+
+      "border",
+      "borderRadius",
+
+      "padding",
+      "margin",
+      
+      "textAlign",
+      "textDecoration",
+      "display",
+      "fontSize",
+      
+      "cursor",
+    ];
+  
+    const Input = [
+      "fontSize",
+      "margin",
+      "cursor",
+    ];

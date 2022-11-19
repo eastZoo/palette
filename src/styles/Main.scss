@@ -1,0 +1,55 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  color: var(--theme-color);
+  padding: 20px 40px;
+  height: 100%;
+  background-color: var(--theme-bg-color);
+  overflow: auto;
+  @media screen and (max-width: 510px) {
+   padding: 20px;
+  }
+  .content-title {
+    margin-left: 10px;
+  }
+  .apps-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    grid-gap: 15px;
+   }
+   
+   .app-card {
+    font-size: 16px;
+    background-color: var(--content-bg);
+    border-radius: 14px;
+    border: 1px solid var(--theme-bg-color);
+    padding: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+     transform: scale(1.02);
+     background-color: var(--theme-bg-color);
+    }
+     span {
+      display: flex;
+      align-items: center;
+     }
+     &__subtext {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6em;
+      margin-top: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+     }
+     &-buttons {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-top: 16px;
+     }
+  }
+}
+
