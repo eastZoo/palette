@@ -1,117 +1,82 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./App.scss";
 import ButtonSection from "./components/ButtonSection";
 import InputSection from "./components/InputSection";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Main from "./components/layout/Main";
+import ColorPalette from "./components/test/ColorPalette";
 
 function App() {
+  const nextId = useRef(1);
   const [section, setSection] = useState("Button");
-  const [style, setstyle] = useState([
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "royalblue",
-      color: "blue",
-      padding: "20px",
-      border: "1px solid red"
-    },
-    {
-      backgroundColor: "royalblue",
-      color: "blue",
-      padding: "20px",
-      border: "1px solid red"
-    },
-    {
-      backgroundColor: "royalblue",
-      color: "blue",
-      padding: "20px",
-      border: "1px solid red"
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-    {
-      backgroundColor: "orange",
-      color: "blue",
-      border: "20px",
-      padding: "20px",
-      cursor: " pointer",
-    },
-  ]);
+  const [buttonInputs, setButtonInputs] = useState({
+    id: 1,
+    text: "button",
+    backgroundColor: "",
+    color: "",
+    border: "1",
+    borderRadius: "1",
+    padding: "1",
+    margin: "1",
+    fontSize: "16",
+    cursor: "",
+    type: ""
+  });
+
+  // main컴포넌트에 넘어갈 요소들
+  const [styles, setstyles] = useState([]);
+  const {
+    text,
+    backgroundColor,
+    color,
+    border,
+    borderRadius,
+    padding,
+    margin,
+    fontSize,
+    cursor,
+    type,
+  } = buttonInputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setButtonInputs({
+      ...buttonInputs,
+      [name]: value,
+    });
+  };
+
+  const onCreate = () => {
+    const style = {
+      id: nextId.current,
+      text,
+      backgroundColor,
+      color,
+      border,
+      borderRadius:`${borderRadius}px`,
+      padding:`${padding}px`,
+      margin:`${margin}px`,
+      fontSize:`${fontSize}px`,
+      cursor,
+      type : section,
+    };
+    setstyles(styles.concat(style));
+    nextId.current += 1;
+  };
+
+  const onRemove = (id) => {
+    // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+    // = user.id 가 id 인 것을 제거함
+    setstyles(styles.filter((user) => user.id !== id));
+  };
+
   const sectionHandler = (menu) => {
     setSection(menu);
   };
-
-  
   return (
     <div className="App">
+      {/* <ColorPalette/> */}
       {/* 배경 비디오 */}
       <div class="video-bg">
         <video
@@ -131,12 +96,26 @@ function App() {
         <Header sectionHandler={sectionHandler} />
         <div className="wrapper">
           <div class="left-side">
-            {section === "Button" && <ButtonSection />}
+            {section === "Button" && (
+              <ButtonSection
+                text={text}
+                backgroundColor={backgroundColor}
+                color={color}
+                border={border}
+                borderRadius={borderRadius}
+                padding={padding}
+                margin={margin}
+                fontSize={fontSize}
+                cursor={cursor}
+                onChange={onChange}
+                onCreate={onCreate}
+              />
+            )}
             {section === "Input" && <InputSection />}
           </div>
           {/* 오른쪽 메인 팔레트 */}
           <div className="main-container">
-            <Main styles={style} />
+            <Main styles={styles} type={section} onRemove={onRemove}/>
           </div>
         </div>
         <Footer />
