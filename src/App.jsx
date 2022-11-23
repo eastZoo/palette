@@ -5,14 +5,11 @@ import InputSection from "./components/InputSection";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
 import Main from "./components/layout/Main";
-import ColorPalette from "./components/test/ColorPalette";
 
 function App() {
   const nextId = useRef(1);
   const [section, setSection] = useState("Button");
-  const [buttonInputs, setButtonInputs] = useState({
-    text: "button",
-  });
+  const [buttonStyle, setButtonStyle] = useState({});
 
   // main컴포넌트에 넘어갈 요소들
   const [styles, setstyles] = useState([]);
@@ -29,14 +26,28 @@ function App() {
     height,
     width,
     type,
-  } = buttonInputs;
+  } = buttonStyle;
 
-  console.log(buttonInputs);
+  const preview = {
+    text: text,
+    backgroundColor: backgroundColor,
+    color: color,
+    border: border,
+    borderRadius: `${borderRadius}px`,
+    padding: padding,
+    margin: `${margin}px`,
+    fontSize: `${fontSize}px`,
+    cursor: cursor,
+    height: `${height}px`,
+    width: `${width}px`,
+  };
+
+  console.log(styles)
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setButtonInputs({
-      ...buttonInputs,
+    setButtonStyle({
+      ...buttonStyle,
       [name]: value,
     });
   };
@@ -69,6 +80,7 @@ function App() {
 
   const sectionHandler = (menu) => {
     setSection(menu);
+    setButtonStyle({});
   };
   return (
     <div className="App">
@@ -89,7 +101,7 @@ function App() {
         </video>
       </div>
       <div class="main">
-        <Header sectionHandler={sectionHandler} />
+        <Header sectionHandler={sectionHandler} section={section} />
         <div className="wrapper">
           <div class="left-side">
             {section === "Button" && (
@@ -109,11 +121,33 @@ function App() {
                 onCreate={onCreate}
               />
             )}
-            {section === "Input" && <InputSection />}
+            {section === "Input" && (
+              <InputSection
+                text={text}
+                backgroundColor={backgroundColor}
+                color={color}
+                border={border}
+                borderRadius={borderRadius}
+                padding={padding}
+                margin={margin}
+                fontSize={fontSize}
+                cursor={cursor}
+                height={height}
+                width={width}
+                onChange={onChange}
+                onCreate={onCreate}
+              />
+            )}
           </div>
           {/* 오른쪽 메인 팔레트 */}
           <div className="main-container">
-            <Main styles={styles} onRemove={onRemove}/>
+            <Main
+              styles={styles}
+              onRemove={onRemove}
+              onCreate={onCreate}
+              preview={preview}
+              section={section}
+            />
           </div>
         </div>
         <Footer />

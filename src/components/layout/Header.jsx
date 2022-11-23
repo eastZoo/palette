@@ -8,13 +8,13 @@ const Header = (props) => {
       <div class="menu-circle"></div>
       <div class="header-menu">
         <a
-          class="menu-link is-active"
+          className={props.section === "Button" ? "menu-link is-active" : "menu-link"}
           onClick={() => props.sectionHandler("Button")}
         >
           Button
         </a>
         <a
-          class="menu-link is-active"
+          className={props.section === "Input" ? "menu-link is-active" : "menu-link"}
           onClick={() => props.sectionHandler("Input")}
         >
           Input

@@ -15,19 +15,7 @@ const ButtonSection = ({
   onChange,
   onCreate,
 }) => {
-  const preview = {
-    text: text,
-    backgroundColor: backgroundColor,
-    color: color,
-    border: border,
-    borderRadius: `${borderRadius}px`,
-    padding: padding,
-    margin: `${margin}px`,
-    fontSize: `${fontSize}px`,
-    cursor: cursor,
-    height: `${height}px`,
-    width: `${width}px`,
-  };
+  
   return (
     <>
       {/* 텍스트 조정 */}
@@ -56,6 +44,14 @@ const ButtonSection = ({
                 className="search-bar__input"
                 min="0"
                 max="200"
+                onChange={onChange}
+                value={fontSize || 16}
+              />
+              <input
+                type="text"
+                name="fontSize"
+                className="search-bar__input"
+                placeholder="16px"
                 onChange={onChange}
                 value={fontSize}
               />
@@ -123,6 +119,14 @@ const ButtonSection = ({
                 className="search-bar__input"
                 placeholder="10px, 10%, 10vh..."
                 onChange={onChange}
+                value={borderRadius || 0}
+              />
+              <input
+                type="text"
+                name="borderRadius"
+                className="search-bar__input"
+                placeholder="16px"
+                onChange={onChange}
                 value={borderRadius}
               />
             </div>
@@ -146,7 +150,7 @@ const ButtonSection = ({
               />
             </div>
           </div>
-          <div className="side-content">
+          {/* <div className="side-content">
             <a>width : {width}px</a>
             <div className="search-bar">
               <input
@@ -157,12 +161,12 @@ const ButtonSection = ({
                 className="search-bar__input"
                 placeholder="10px, 10%, 10vh..."
                 onChange={onChange}
-                value={width}
+                value={width || 0}
               />
             </div>
           </div>
           <div className="side-content">
-            <a>height</a>
+            <a>height : {height}px</a>
             <div className="search-bar">
               <input
                 type="range"
@@ -172,13 +176,12 @@ const ButtonSection = ({
                 placeholder="solid, 1px solid black..."
                 className="search-bar__input"
                 onChange={onChange}
-                value={height}
+                value={height || 0}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-
 
       {/* 나머지 */}
       <div className="side-wrapper">
@@ -199,20 +202,6 @@ const ButtonSection = ({
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <button
-          style={{ marginTop: "20px" }}
-          type="submit"
-          className="search-bar__btn"
-          onClick={onCreate}
-        >
-          Save
-        </button>
-      </div>
-      <div className="preview">
-        <div>PREVIEW</div>
-        <button style={preview}>{preview.text}</button>
       </div>
     </>
   );
